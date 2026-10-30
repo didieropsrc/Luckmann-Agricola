@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="es-PY">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Panel · Luckmann Agrícola</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/client/styles.css">
+  <link rel="stylesheet" href="/src/admin/admin.css">
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+</head>
+<body class="admin">
+  <!-- Login -->
+  <section id="login-view" class="login" hidden>
+    <form id="login-form" class="form login-card">
+      <img src="/logo.svg" alt="Luckmann Agrícola" width="220" height="47">
+      <h1>Panel de administración</h1>
+      <label>Contraseña <input type="password" name="password" required autocomplete="current-password"></label>
+      <div id="login-turnstile" class="turnstile"></div>
+      <button class="btn btn-primary btn-block" type="submit">Entrar</button>
+      <p class="form-msg" id="login-msg" role="status"></p>
+    </form>
+  </section>
+
+  <!-- Panel -->
+  <div id="app-view" hidden>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="/admin/"><img src="/logo.svg" alt="Luckmann Agrícola" width="188" height="40"></a>
+        <nav class="tabs" role="tablist">
+          <button type="button" role="tab" data-tab="products" aria-selected="true">Productos</button>
+          <button type="button" role="tab" data-tab="categories" aria-selected="false">Etiquetas</button>
+          <button type="button" role="tab" data-tab="suggestions" aria-selected="false">Sugerencias <span class="badge" id="new-suggestions" hidden></span></button>
+        </nav>
+        <div class="header-actions">
+          <a class="btn" href="/" target="_blank" rel="noopener">Ver tienda</a>
+          <button type="button" class="btn" id="logout">Salir</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap admin-main">
+      <section data-panel="products">
+        <div class="panel-head">
+          <h1>Productos</h1>
+          <button type="button" class="btn btn-primary" data-new-product>+ Nuevo producto</button>
+        </div>
+        <div id="products-list"></div>
+      </section>
+
+      <section data-panel="categories" hidden>
+        <div class="panel-head">
+          <h1>Etiquetas</h1>
+          <button type="button" class="btn btn-primary" data-new-category>+ Nueva etiqueta</button>
+        </div>
+        <p class="muted">Organizá los productos en etiquetas y subetiquetas (por ejemplo: Semillas › Tomates). Cada etiqueta tiene su propia página en la tienda.</p>
+        <div id="categories-list"></div>
+      </section>
+
+      <section data-panel="suggestions" hidden>
+        <div class="panel-head">
+          <h1>Sugerencias de semillas</h1>
+        </div>
+        <div id="suggestions-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Editor de producto -->
+  <dialog id="product-dialog" class="dialog dialog-wide">
+    <form id="product-form" class="form" method="dialog">
+      <div class="dialog-head">
+        <h2 id="product-dialog-title">Producto</h2>
+        <button type="button" class="icon-btn" data-close-dialog aria-label="Cerrar">✕</button>
+      </div>
+      <div class="dialog-body editor">
+        <div class="editor-main">
+          <label>Nombre * <input name="name" required maxlength="140"></label>
+          <div class="form-row">
+            <label>Precio (Gs.) * <input name="price" required inputmode="numeric" placeholder="70.000"></label>
+            <label>Stock disponible * <input name="stock" type="number" min="0" required></label>
+          </div>
+          <label>Descripción corta <span class="hint">(aparece en la tarjeta del producto)</span>
+            <textarea name="short_description" rows="2" maxlength="300"></textarea>
+          </label>
+          <label>Descripción
+            <span class="hint">Línea en blanco = nuevo párrafo · «- » al inicio = viñeta · **texto** = negrita</span>
+            <textarea name="description" rows="9" maxlength="8000"></textarea>
+          </label>
+          <fieldset>
+            <legend>Fotos</legend>
+            <div id="image-grid" class="image-grid"></div>
+            <label class="dropzone">
+              <input type="file" id="image-input" accept="image/*" multiple>
+              <span>📷 Tocá para elegir fotos o arrastralas acá</span>
+              <small>Se optimizan automáticamente. La primera foto es la principal.</small>
+            </label>
+          </fieldset>
+        </div>
+        <aside class="editor-side">
+          <fieldset>
+            <legend>Visibilidad</legend>
+            <label class="check"><input type="checkbox" name="active" checked> Visible en la tienda</label>
+            <label class="check"><input type="checkbox" name="featured"> Destacado (aparece primero)</label>
+          </fieldset>
+          <fieldset>
+            <legend>Etiquetas</legend>
+            <div id="product-categories" class="category-checks"></div>
+          </fieldset>
+          <details>
+            <summary>SEO (opcional)</summary>
+            <label>URL <span class="hint">/producto/…</span><input name="slug" maxlength="80" placeholder="se genera del nombre"></label>
+            <label>Título para Google <input name="seo_title" maxlength="120"></label>
+            <label>Descripción para Google <textarea name="seo_description" rows="3" maxlength="300"></textarea></label>
+          </details>
+        </aside>
+      </div>
+      <div class="dialog-foot">
+        <p class="form-msg" id="product-msg" role="status"></p>
+        <button type="button" class="btn" data-close-dialog>Cancelar</button>
+        <button type="submit" class="btn btn-primary" value="save">Guardar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Editor de etiqueta -->
+  <dialog id="category-dialog" class="dialog">
+    <form id="category-form" class="form" method="dialog">
+      <div class="dialog-head">
+        <h2 id="category-dialog-title">Etiqueta</h2>
+        <button type="button" class="icon-btn" data-close-dialog aria-label="Cerrar">✕</button>
+      </div>
+      <div class="dialog-body">
+        <label>Nombre * <input name="name" required maxlength="60"></label>
+        <label>Dentro de <select name="parent_id"></select></label>
+        <label>Descripción <span class="hint">(se muestra en la página de la etiqueta y ayuda al SEO)</span>
+          <textarea name="description" rows="3" maxlength="500"></textarea>
+        </label>
+        <div class="form-row">
+          <label>Orden <input name="position" type="number" value="0"></label>
+          <label>URL <input name="slug" maxlength="80" placeholder="se genera del nombre"></label>
+        </div>
+      </div>
+      <div class="dialog-foot">
+        <p class="form-msg" id="category-msg" role="status"></p>
+        <button type="button" class="btn" data-close-dialog>Cancelar</button>
+        <button type="submit" class="btn btn-primary" value="save">Guardar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <script type="module" src="/src/admin/main.ts"></script>
+</body>
+</html>

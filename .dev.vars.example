@@ -1,0 +1,4 @@
+# Copiá este archivo como .dev.vars para desarrollo local (no se sube a git).
+ADMIN_PASSWORD=cambiar-esta-clave
+# Clave secreta de PRUEBA de Turnstile (siempre aprueba). En producción usá la tuya.
+TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
