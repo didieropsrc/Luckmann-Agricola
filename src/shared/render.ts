@@ -167,7 +167,7 @@ function storeLd(site: SiteConfig): object {
     "@id": `${site.siteUrl}/#store`,
     name: SITE_NAME,
     url: `${site.siteUrl}/`,
-    logo: `${site.siteUrl}/icon-512.png`,
+    logo: `${site.siteUrl}/logo.png`,
     image: `${site.siteUrl}${DEFAULT_IMAGE}`,
     description: HOME_DESCRIPTION,
     telephone: `+${site.whatsapp}`,

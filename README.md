@@ -101,7 +101,12 @@ Despliegues siguientes: `npm run deploy` (hace el build, aplica migraciones nuev
 
 ## Logo e isologo
 
-Los archivos `public/logo.svg`, `public/isologo.svg` y `public/favicon.svg` son **provisorios**. Reemplazalos por los tuyos con el mismo nombre (si son PNG, cambiá la extensión en `index.html` y `admin/index.html`). También conviene regenerar `public/apple-touch-icon.png` (180×180) e `public/icon-512.png` (512×512) con tu isologo.
+- `public/logo.webp` / `logo.png`: logo completo con fondo transparente (pie de página, login del panel y logo para Google).
+- `public/isologo.webp` / `isologo.png`: isologo transparente (cabecera).
+- `favicon.ico`, `favicon.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`: íconos generados desde el isologo.
+- `og-image.jpg`: imagen que aparece al compartir el link en WhatsApp o Facebook.
+
+Para cambiarlos, reemplazá los archivos manteniendo el mismo nombre.
 
 ## SEO: cómo está hecho y qué te falta hacer
 

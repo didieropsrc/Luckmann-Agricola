@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>Panel · Luckmann Agrícola</title>
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/client/styles.css">
   <link rel="stylesheet" href="/src/admin/admin.css">
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
@@ -14,7 +17,7 @@
   <!-- Login -->
   <section id="login-view" class="login" hidden>
     <form id="login-form" class="form login-card">
-      <img src="/logo.svg" alt="Luckmann Agrícola" width="220" height="47">
+      <img class="login-logo" src="/logo.webp" alt="Luckmann Agrícola" width="160" height="158">
       <h1>Panel de administración</h1>
       <label>Contraseña <input type="password" name="password" required autocomplete="current-password"></label>
       <div id="login-turnstile" class="turnstile"></div>
@@ -27,7 +30,10 @@
   <div id="app-view" hidden>
     <header class="site-header">
       <div class="wrap header-inner">
-        <a class="brand" href="/admin/"><img src="/logo.svg" alt="Luckmann Agrícola" width="188" height="40"></a>
+        <a class="brand" href="/admin/" aria-label="Panel">
+          <img src="/isologo.webp" alt="" width="42" height="45">
+          <span class="brand-text"><span class="brand-name">Luckmann</span><span class="brand-sub">Panel</span></span>
+        </a>
         <nav class="tabs" role="tablist">
           <button type="button" role="tab" data-tab="products" aria-selected="true">Productos</button>
           <button type="button" role="tab" data-tab="categories" aria-selected="false">Etiquetas</button>
