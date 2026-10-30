@@ -230,8 +230,8 @@ function homePage(catalog: Catalog, site: SiteConfig): Page {
 <section class="section prose" aria-labelledby="san-marzano-paraguay">
   <h2 id="san-marzano-paraguay">Tomate San Marzano en Paraguay</h2>
   <p>El <strong>tomate San Marzano</strong> es el tomate italiano por excelencia: fruto alargado, pulpa densa, poca acidez y pocas semillas.
-  Es el preferido para la salsa de tomate y la pizza napolitana. Hasta ahora prácticamente no había dónde conseguir
-  <strong>semillas de tomate San Marzano en Paraguay</strong>, por eso las traemos nosotros.</p>
+  Es el preferido para la salsa de tomate y la pizza napolitana. En Luckmann Agrícola vendemos
+  <strong>semillas de tomate San Marzano en Paraguay</strong>, traídas directamente desde Italia.</p>
   <p>Nuestras semillas son de la variedad <strong>San Marzano 2</strong>, la utilizada para producir el Pomodoro San Marzano
   dell'Agro Sarnese-Nocerino D.O.P. Vienen en su sobre original sellado, importadas desde Italia y sin modificación genética,
   para quienes buscan el tomate italiano auténtico en su huerta, en cualquier parte del país.</p>

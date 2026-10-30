@@ -73,7 +73,7 @@ npx wrangler secret put TURNSTILE_SECRET_KEY
 
 4. Volvé a desplegar con `npm run deploy`.
 
-> Mientras `TURNSTILE_SITE_KEY` sea la clave de prueba (`1x00000000000000000000AA`), el antibots **no protege nada** (siempre aprueba). Si ponés una clave real y te olvidás el secreto, el formulario devuelve un error en vez de quedar desprotegido.
+> Mientras `TURNSTILE_SITE_KEY` sea la clave de prueba (`1x00000000000000000000AA`), el cuadro muestra «Solo para pruebas» y el antibots **no protege nada** (siempre aprueba). Si ponés una clave real y te olvidás el secreto, el formulario devuelve un error en vez de quedar desprotegido.
 
 ## Uso diario
 

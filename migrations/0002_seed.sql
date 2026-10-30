@@ -18,8 +18,6 @@ INSERT INTO products (id, name, slug, short_description, description, price, sto
 - Tomate de crecimiento indeterminado (necesita tutorado), de fruto alargado, pulpa densa y pocas semillas.
 - Ideal para salsa de tomate, pelati, pizza napoletana y conservas.
 
-Hoy prácticamente no hay quien venda semillas de tomate San Marzano en Paraguay: las traemos nosotros para que puedas cultivarlo en tu propia huerta.
-
 Hacé tu pedido por WhatsApp y coordinamos la entrega.',
    70000, 8, 1, 1,
    'Semillas de Tomate San Marzano 2 D.O.P. en Paraguay | Luckmann Agrícola',
